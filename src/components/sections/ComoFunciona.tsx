@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+import FoldText from "@/components/ui/FoldText";
 
 // Paso 1 = clic en el CTA, paso 2 = el trabajo condensado, paso 3 = la
 // transformación real (no "recibís tu pedido" — eso es logística, no beneficio).
@@ -82,7 +83,15 @@ export default function ComoFunciona() {
             id="como-funciona-heading"
             className="section-h2 mt-3 tracking-tight text-balance text-foreground"
           >
-            Cómo funciona
+            <FoldText
+              text="Cómo funciona"
+              splitBy="word"
+              trigger="scroll"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </h2>
           <p className="mt-4 text-lg leading-8 text-foreground/70">
             Sin trámites ni vueltas: cotizás y recibís donde estés.

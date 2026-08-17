@@ -3,6 +3,7 @@ import LineasDeProducto from "@/components/sections/LineasDeProducto";
 import Fabricacion from "@/components/sections/Fabricacion";
 import ComoFunciona from "@/components/sections/ComoFunciona";
 import FAQ from "@/components/sections/FAQ";
+import Contacto from "@/components/sections/Contacto";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Fabricacion />
       <ComoFunciona />
       <FAQ />
+      <Contacto />
     </main>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
+import FoldText from "@/components/ui/FoldText";
 import ShieldCheckIcon from "@/components/icons/ShieldCheckIcon";
 import LinkIcon from "@/components/icons/LinkIcon";
 
@@ -98,7 +99,15 @@ export default function LineasDeProducto() {
             id="lineas-heading"
             className="section-h2 mt-3 tracking-tight text-balance text-foreground"
           >
-            Líneas de producto
+            <FoldText
+              text="Líneas de producto"
+              splitBy="word"
+              trigger="scroll"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </h2>
           <p className="mt-4 text-lg leading-8 text-foreground/70">
             Precio de fábrica en cada línea. Elige la tuya y te pasamos la

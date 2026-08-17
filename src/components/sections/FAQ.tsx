@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import FoldText from "@/components/ui/FoldText";
 import { buildWhatsappLink } from "@/lib/whatsapp";
 
 type FAQItem = { question: string; answer: string };
@@ -68,7 +69,15 @@ export default function FAQ() {
             id="preguntas-heading"
             className="section-h2 max-w-md tracking-tight text-balance text-foreground"
           >
-            Preguntas frecuentes
+            <FoldText
+              text="Preguntas frecuentes"
+              splitBy="word"
+              trigger="scroll"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </h2>
           <p className="max-w-sm text-sm leading-relaxed text-foreground/70">
             ¿No encontrás lo que buscás?{" "}

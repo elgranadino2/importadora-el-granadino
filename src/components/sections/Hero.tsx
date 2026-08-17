@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
+import FoldText from "@/components/ui/FoldText";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -38,17 +39,31 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <motion.h1
-          variants={item}
-          className="hero-h1 mt-8 tracking-tight text-balance"
-        >
+        <h1 className="hero-h1 mt-8 tracking-tight text-balance">
           <span className="block font-medium text-foreground/50">
-            Accesorios para moto,
+            <FoldText
+              text="Accesorios para moto,"
+              splitBy="word"
+              trigger="mount"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </span>
           <span className="block font-semibold text-foreground">
-            ferretería y cacharrería al por mayor
+            <FoldText
+              text="ferretería y cacharrería al por mayor"
+              splitBy="word"
+              trigger="mount"
+              hinge="top"
+              stagger={0.05}
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </span>
-        </motion.h1>
+        </h1>
 
         <motion.p
           variants={item}

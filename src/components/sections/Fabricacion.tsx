@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
+import FoldText from "@/components/ui/FoldText";
 import CheckCircleIcon from "@/components/icons/CheckCircleIcon";
 import XCircleIcon from "@/components/icons/XCircleIcon";
 
@@ -66,7 +67,15 @@ export default function Fabricacion() {
             id="fabricacion-heading"
             className="section-h2 mt-3 tracking-tight text-balance text-foreground"
           >
-            Le compras a quien fabrica, no a quien revende
+            <FoldText
+              text="Le compras a quien fabrica, no a quien revende"
+              splitBy="word"
+              trigger="scroll"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </h2>
           <p className="mt-4 text-lg leading-8 text-foreground/70">
             Un intermediario no fabrica lo que te vende — le compra a alguien
