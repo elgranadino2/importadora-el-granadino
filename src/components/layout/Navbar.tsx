@@ -155,7 +155,7 @@ function Navbar() {
   // Animar el ancho es layout, no transform — rompe a propósito la regla de
   // "solo transform/opacity", porque escalar deformaría el texto. El costo
   // queda contenido a este subárbol de pocos elementos.
-  const maxWidthRem = useTransform(compact, [0, 1], [50, 38]);
+  const maxWidthRem = useTransform(compact, [0, 1], [64, 46]);
   const maxWidth = useMotionTemplate`${maxWidthRem}rem`;
 
   const bgAlpha = useTransform(compact, [0, 1], [0, 0.9]);
@@ -178,7 +178,7 @@ function Navbar() {
         initial="hidden"
         animate="visible"
         style={{ maxWidth }}
-        className="relative mx-auto flex items-center justify-between gap-2 rounded-full p-2 md:gap-6 md:py-3 md:pl-6 md:pr-3"
+        className="relative mx-auto flex items-center justify-between gap-2 rounded-full p-2 md:gap-10 md:py-2.5 md:pl-8 md:pr-3"
       >
         {/* Móvil: la barra flota sobre el contenido desde el scroll 0, así que
             el fondo es fijo. La condensación solo aplica en desktop. */}
@@ -220,7 +220,7 @@ function Navbar() {
         <motion.ul
           variants={listVariants}
           onMouseLeave={handleLeave}
-          className="relative flex items-center gap-1"
+          className="relative flex items-center gap-1 md:gap-2"
         >
           {LINKS.map((link) => {
             const isTarget = target === link.id;
@@ -254,7 +254,7 @@ function Navbar() {
                   onFocus={() => handleEnter(link.id)}
                   onBlur={handleLeave}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative z-10 block rounded-full px-3 py-2.5 text-xs font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:px-5 md:py-3 md:text-sm ${
+                  className={`relative z-10 block rounded-full px-3 py-2.5 text-xs font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:px-4 md:py-2.5 md:text-sm ${
                     isTarget ? "text-background" : "text-foreground/70"
                   }`}
                 >
@@ -276,7 +276,7 @@ function Navbar() {
         <motion.div variants={itemVariants} className="relative shrink-0">
           <WhatsappCtaButton
             tag="navbar"
-            className="px-4 py-2.5 text-xs md:px-5 md:py-3 md:text-sm"
+            className="px-4 py-2.5 text-xs md:px-5 md:py-2.5 md:text-sm"
           >
             Cotizar
           </WhatsappCtaButton>
