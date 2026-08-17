@@ -43,3 +43,13 @@ body {
     black 85%
   );
 }
+
+/* Mismo motivo del Hero en forma circular — reemplaza el anillo genérico
+   de la referencia por nuestra propia textura de marca. */
+.circle-dots {
+  pointer-events: none;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(circle, black 55%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, black 55%, transparent 72%);
+}

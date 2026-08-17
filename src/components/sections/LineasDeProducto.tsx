@@ -167,7 +167,7 @@ export default function LineasDeProducto() {
                     linea={linea.nombre}
                     className="px-4 py-2 text-sm"
                   >
-                    Cotizar {linea.nombre}
+                    Cotizar
                   </WhatsappCtaButton>
                 </div>
               </motion.article>
