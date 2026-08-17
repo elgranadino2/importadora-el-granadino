@@ -29,6 +29,10 @@ body {
   font-size: clamp(2.25rem, 1rem + 4vw, 3rem);
 }
 
+.section-h2 {
+  font-size: clamp(1.875rem, 1.2rem + 2vw, 2.5rem);
+}
+
 .hero-dots {
   pointer-events: none;
   background-image: radial-gradient(#cbd5e1 1px, transparent 1px);

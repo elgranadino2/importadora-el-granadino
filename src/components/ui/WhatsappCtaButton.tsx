@@ -4,18 +4,20 @@ import WhatsappIcon from "@/components/icons/WhatsappIcon";
 
 type WhatsappCtaButtonProps = {
   tag: string;
+  linea?: string;
   children: ReactNode;
   className?: string;
 };
 
 export default function WhatsappCtaButton({
   tag,
+  linea,
   children,
   className = "",
 }: WhatsappCtaButtonProps) {
   return (
     <a
-      href={buildWhatsappLink({ tag })}
+      href={buildWhatsappLink({ tag, linea })}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent font-semibold text-white transition-[background-color,transform] duration-200 hover:bg-accent/90 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${className}`}
