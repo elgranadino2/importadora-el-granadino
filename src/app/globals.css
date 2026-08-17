@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --raw-bg: #ffffff;
+  --raw-ink: #12181f;
+  --raw-brand: #14335c;
+  --raw-accent: #0b7a3e;
+  --raw-card: #ffffff;
+  --raw-border: #e2e8f0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--raw-bg);
+  --color-foreground: var(--raw-ink);
+  --color-brand: var(--raw-brand);
+  --color-accent: var(--raw-accent);
+  --color-card: var(--raw-card);
+  --color-border: var(--raw-border);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.hero-h1 {
+  font-size: clamp(2.25rem, 1rem + 4vw, 3rem);
+}
+
+.hero-dots {
+  pointer-events: none;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(
+    ellipse 65% 55% at 50% 40%,
+    transparent 30%,
+    black 85%
+  );
 }
