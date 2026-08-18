@@ -23,6 +23,7 @@ export default function Contacto() {
             <FoldText
               text="Hablemos"
               splitBy="char"
+              stagger={0.04}
               trigger="scroll"
               hinge="top"
               fontSize="inherit"
@@ -45,7 +46,16 @@ export default function Contacto() {
         <Reveal className="mt-16 grid gap-10 border-t border-border pt-14 sm:grid-cols-2">
           <div>
             <p className="text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-              Contacto
+              <FoldText
+                text="Contacto"
+                splitBy="char"
+                stagger={0.03}
+                trigger="scroll"
+                hinge="top"
+                fontSize="inherit"
+                fontWeight="inherit"
+                color="inherit"
+              />
             </p>
             <a
               href={buildWhatsappLink({ tag: "contacto-numero" })}
@@ -62,7 +72,16 @@ export default function Contacto() {
 
           <div>
             <p className="text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-              Cobertura
+              <FoldText
+                text="Cobertura"
+                splitBy="char"
+                stagger={0.03}
+                trigger="scroll"
+                hinge="top"
+                fontSize="inherit"
+                fontWeight="inherit"
+                color="inherit"
+              />
             </p>
             <p className="mt-4 text-lg font-medium text-foreground">
               Medellín, Colombia

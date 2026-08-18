@@ -85,7 +85,8 @@ export default function ComoFunciona() {
           >
             <FoldText
               text="Cómo funciona"
-              splitBy="word"
+              splitBy="char"
+              stagger={0.035}
               trigger="scroll"
               hinge="top"
               fontSize="inherit"
@@ -104,7 +105,16 @@ export default function ComoFunciona() {
               <motion.div variants={item} className="flex-1">
                 <p className="text-5xl font-bold text-brand/20">{paso.numero}</p>
                 <h3 className="mt-3 text-xl font-semibold text-foreground">
-                  {paso.titulo}
+                  <FoldText
+                    text={paso.titulo}
+                    splitBy="word"
+                    stagger={0.04}
+                    trigger="scroll"
+                    hinge="top"
+                    fontSize="inherit"
+                    fontWeight="inherit"
+                    color="inherit"
+                  />
                 </h3>
                 <p className="mt-2 max-w-xs text-sm leading-6 text-foreground/70">
                   {paso.descripcion}

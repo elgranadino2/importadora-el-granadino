@@ -34,7 +34,16 @@ export default function Hero() {
       >
         <motion.div variants={item}>
           <p className="text-base font-bold tracking-tight text-brand">
-            EL GRANADINO
+            <FoldText
+              text="EL GRANADINO"
+              splitBy="char"
+              stagger={0.03}
+              trigger="mount"
+              hinge="top"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </p>
           <p className="mt-2 text-xs font-semibold tracking-widest text-foreground/70 uppercase">
             Fabricantes · Medellín
@@ -46,6 +55,7 @@ export default function Hero() {
             <FoldText
               text="Accesorios para moto,"
               splitBy="word"
+              stagger={0.06}
               trigger="mount"
               hinge="top"
               fontSize="inherit"
@@ -57,9 +67,9 @@ export default function Hero() {
             <FoldText
               text="ferretería y cacharrería al por mayor"
               splitBy="word"
+              stagger={0.06}
               trigger="mount"
               hinge="top"
-              stagger={0.05}
               fontSize="inherit"
               fontWeight="inherit"
               color="inherit"

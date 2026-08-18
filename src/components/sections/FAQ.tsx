@@ -71,7 +71,8 @@ export default function FAQ() {
           >
             <FoldText
               text="Preguntas frecuentes"
-              splitBy="word"
+              splitBy="char"
+              stagger={0.03}
               trigger="scroll"
               hinge="top"
               fontSize="inherit"

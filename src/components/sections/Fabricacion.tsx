@@ -91,7 +91,16 @@ export default function Fabricacion() {
         >
           <div className="bg-background p-8">
             <p className="text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-              Con un intermediario
+              <FoldText
+                text="Con un intermediario"
+                splitBy="word"
+                stagger={0.04}
+                trigger="scroll"
+                hinge="top"
+                fontSize="inherit"
+                fontWeight="inherit"
+                color="inherit"
+              />
             </p>
             <ul className="mt-6 space-y-4">
               {CONTRAS.map((c) => (
@@ -105,7 +114,16 @@ export default function Fabricacion() {
 
           <div className="bg-brand/[0.03] p-8">
             <p className="text-xs font-semibold tracking-widest text-brand uppercase">
-              Comprando directo a El Granadino
+              <FoldText
+                text="Comprando directo a El Granadino"
+                splitBy="word"
+                stagger={0.04}
+                trigger="scroll"
+                hinge="top"
+                fontSize="inherit"
+                fontWeight="inherit"
+                color="inherit"
+              />
             </p>
             <ul className="mt-6 space-y-4">
               {PROS.map((p) => (

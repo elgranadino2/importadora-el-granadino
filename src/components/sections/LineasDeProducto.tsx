@@ -101,7 +101,8 @@ export default function LineasDeProducto() {
           >
             <FoldText
               text="Líneas de producto"
-              splitBy="word"
+              splitBy="char"
+              stagger={0.03}
               trigger="scroll"
               hinge="top"
               fontSize="inherit"
@@ -153,7 +154,16 @@ export default function LineasDeProducto() {
                     )}
                   </div>
                   <h3 className="mt-3 text-xl font-semibold text-foreground">
-                    {linea.nombre}
+                    <FoldText
+                      text={linea.nombre}
+                      splitBy={linea.nombre.split(" ").length <= 2 ? "char" : "word"}
+                      stagger={0.03}
+                      trigger="scroll"
+                      hinge="top"
+                      fontSize="inherit"
+                      fontWeight="inherit"
+                      color="inherit"
+                    />
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-foreground/70">
                     {linea.descripcion}
