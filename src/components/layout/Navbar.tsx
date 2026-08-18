@@ -200,22 +200,21 @@ function Navbar() {
           className="absolute inset-0 hidden rounded-full border md:block"
         />
 
-        {/* Hairline de progreso de lectura, en el navy de marca — el verde de
-            acento queda exclusivo para el CTA, nunca para un indicador. */}
+        {/* Hairline de progreso de lectura en gradiente de marca */}
         <motion.div
           aria-hidden="true"
           style={{ scaleX: scrollYProgress }}
-          className="absolute inset-x-6 bottom-0 h-px origin-left bg-brand/40"
+          className="absolute inset-x-6 bottom-0 h-[2px] origin-left bg-gradient-to-r from-brand via-brand to-accent"
         />
 
-        {/* El wordmark ya apareció en el Hero — en el pill móvil, angosto,
-            cede el espacio a los links de navegación en vez de repetirlo. */}
+        {/* El wordmark con punto verde de marca */}
         <motion.div variants={itemVariants} className="relative hidden shrink-0 md:block">
           <Link
             href="/"
-            className="block text-base font-bold tracking-tight text-brand transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            className="flex items-center gap-1 text-base font-bold tracking-tight text-brand transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
-            EL GRANADINO
+            <span>EL GRANADINO</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           </Link>
         </motion.div>
 
@@ -230,8 +229,7 @@ function Navbar() {
             return (
               <li key={link.id} className="relative">
                 {isTarget && (
-                  // Una sola píldora con layoutId: viaja entre items en vez de
-                  // aparecer y desaparecer.
+                  // Píldora de navegación viajera en Azul Navy de Marca
                   <motion.span
                     layoutId="nav-pill"
                     aria-hidden="true"
@@ -244,7 +242,7 @@ function Navbar() {
                       initial={{ scaleX: reduceMotion ? 1 : 1.14 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: reduceMotion ? 0 : 0.42, ease: IOS_EASE }}
-                      className="block h-full w-full rounded-full bg-foreground"
+                      className="block h-full w-full rounded-full bg-brand shadow-xs"
                     />
                   </motion.span>
                 )}
