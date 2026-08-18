@@ -40,14 +40,14 @@ const PASOS = [
     titulo: "Escribinos por WhatsApp",
     descripcion: "Elegís tu línea y nos contás qué necesita tu negocio.",
     icono: ChatStepIcon,
-    tag: "Contacto directo 💬",
+    etiqueta: "Contacto directo",
   },
   {
     numero: "02",
     titulo: "Te cotizamos directo",
     descripcion: "Precio de fábrica, cantidad mínima y tiempos, sin vueltas.",
     icono: QuoteStepIcon,
-    tag: "Respuesta en minutos 📋",
+    etiqueta: "Respuesta en minutos",
   },
   {
     numero: "03",
@@ -55,7 +55,7 @@ const PASOS = [
     descripcion:
       "Comprás directo a quien fabrica, sin que un intermediario se quede con la diferencia.",
     icono: MarginStepIcon,
-    tag: "Rentabilidad mayorista 📈",
+    etiqueta: "Rentabilidad mayorista",
   },
 ];
 
@@ -148,7 +148,7 @@ export default function ComoFunciona() {
           </p>
         </motion.div>
 
-        {/* Flujo de pasos con resaltado activo al scroll */}
+        {/* Flujo de pasos sobrio con barra superior conectora de avance */}
         <div className="relative mt-16">
           {/* Barra de progreso superior en Desktop */}
           <div className="relative mb-10 hidden w-full lg:block pointer-events-none">
@@ -159,9 +159,9 @@ export default function ComoFunciona() {
               />
             </div>
             <div className="absolute -top-[5px] left-0 flex w-full justify-between px-2">
-              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background shadow-sm" />
-              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background shadow-sm" />
-              <span className="h-3 w-3 rounded-full bg-accent ring-4 ring-background shadow-sm" />
+              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background shadow-xs" />
+              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background shadow-xs" />
+              <span className="h-3 w-3 rounded-full bg-accent ring-4 ring-background shadow-xs" />
             </div>
           </div>
 
@@ -187,14 +187,12 @@ export default function ComoFunciona() {
                     className="group relative flex-1"
                   >
                     <div className="flex items-center gap-3">
-                      {/* Número gigante con resaltado al scroll */}
-                      <span className="text-4xl font-bold text-brand/30 transition-all duration-300 group-hover:scale-110 group-hover:text-brand select-none">
+                      <p className="text-4xl font-bold text-brand/30 transition-all duration-300 group-hover:scale-110 group-hover:text-brand select-none">
                         {paso.numero}
-                      </span>
-                      {/* Badge con resaltado activo */}
-                      <div className="flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-2.5 py-1 text-xs font-semibold text-brand transition-all duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white shadow-2xs">
-                        <IconoPaso className="h-3.5 w-3.5" />
-                        <span>{paso.tag}</span>
+                      </p>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-brand/80">
+                        <IconoPaso className="h-4 w-4 text-brand" />
+                        <span>{paso.etiqueta}</span>
                       </div>
                     </div>
 
