@@ -112,13 +112,13 @@ export default function Fabricacion() {
           </p>
         </motion.div>
 
-        {/* Tabla comparativa CRO con alto contraste y micro-interacciones de nivel producción */}
+        {/* Tabla comparativa CRO con simetría sutil Rojo vs Verde en fondo claro */}
         <motion.div
           variants={item}
           className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8"
         >
-          {/* Lado Intermediario (Fricción / Rojo sutil) */}
-          <div className="flex flex-col justify-between rounded-2xl border border-red-500/20 bg-red-500/[0.02] p-8 transition-colors duration-300">
+          {/* Lado Intermediario (Rojo Sutil - Advertencia) */}
+          <div className="flex flex-col justify-between rounded-2xl border border-red-500/20 bg-red-500/[0.025] p-8 transition-colors duration-300">
             <div>
               <p className="text-xs font-semibold tracking-widest text-red-600 uppercase">
                 <FoldText
@@ -137,7 +137,7 @@ export default function Fabricacion() {
                   <motion.li
                     key={c}
                     whileHover={{ x: 2 }}
-                    className="group flex items-start gap-3 text-sm text-foreground/75"
+                    className="group flex items-start gap-3 text-sm text-foreground/75 cursor-default"
                   >
                     <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-red-500/80 transition-transform duration-200 group-hover:-rotate-12" />
                     <span>{c}</span>
@@ -147,11 +147,11 @@ export default function Fabricacion() {
             </div>
           </div>
 
-          {/* Lado El Granadino (Ganador / Navy Profundo con Verde Esmeralda) */}
-          <div className="flex flex-col justify-between rounded-2xl border border-brand/40 bg-brand p-8 text-white shadow-xl">
+          {/* Lado El Granadino (Verde Sutil - Opción Ganadora) */}
+          <div className="flex flex-col justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.035] p-8 transition-colors duration-300">
             <div>
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold tracking-widest text-accent uppercase">
+                <p className="text-xs font-semibold tracking-widest text-emerald-700 uppercase">
                   <FoldText
                     text="Comprando directo a El Granadino"
                     splitBy="word"
@@ -163,8 +163,8 @@ export default function Fabricacion() {
                     color="inherit"
                   />
                 </p>
-                <span className="relative flex items-center gap-1.5 rounded-full bg-accent/20 px-3 py-1 text-[11px] font-semibold text-accent">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="relative flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold text-emerald-700">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Mejor opción</span>
                 </span>
               </div>
@@ -175,12 +175,10 @@ export default function Fabricacion() {
                     key={p}
                     whileHover={{ x: 4 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="group flex items-start gap-3 text-sm font-medium text-white/95 cursor-default"
+                    className="group flex items-start gap-3 text-sm font-medium text-foreground cursor-default"
                   >
-                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent transition-transform duration-200 group-hover:scale-125" />
-                    <span className="transition-colors duration-200 group-hover:text-white">
-                      {p}
-                    </span>
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600 transition-transform duration-200 group-hover:scale-125" />
+                    <span>{p}</span>
                   </motion.li>
                 ))}
               </ul>
