@@ -1,26 +1,61 @@
 "use client";
 
+import type { SVGProps } from "react";
 import { Fragment } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 import FoldText from "@/components/ui/FoldText";
+
+function ChatStepIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+  );
+}
+
+function QuoteStepIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+    </svg>
+  );
+}
+
+function MarginStepIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+      <polyline points="17 6 23 6 23 12" />
+    </svg>
+  );
+}
 
 const PASOS = [
   {
     numero: "01",
     titulo: "Escribinos por WhatsApp",
     descripcion: "Elegís tu línea y nos contás qué necesita tu negocio.",
+    icono: ChatStepIcon,
+    tag: "Contacto directo 💬",
   },
   {
     numero: "02",
     titulo: "Te cotizamos directo",
     descripcion: "Precio de fábrica, cantidad mínima y tiempos, sin vueltas.",
+    icono: QuoteStepIcon,
+    tag: "Respuesta en minutos 📋",
   },
   {
     numero: "03",
     titulo: "Ganás margen real",
     descripcion:
       "Comprás directo a quien fabrica, sin que un intermediario se quede con la diferencia.",
+    icono: MarginStepIcon,
+    tag: "Rentabilidad mayorista 📈",
   },
 ];
 
@@ -113,61 +148,79 @@ export default function ComoFunciona() {
           </p>
         </motion.div>
 
-        {/* Flujo de pasos limpio con línea progresiva de avance */}
+        {/* Flujo de pasos limpio con barra superior conectora de avance */}
         <div className="relative mt-16">
-          {/* Línea horizontal en Desktop */}
-          <div className="absolute top-7 left-0 hidden w-full h-[2px] bg-border/60 lg:block pointer-events-none">
-            <motion.div
-              variants={lineHorizontalVariants}
-              className="h-full w-full bg-gradient-to-r from-brand/40 via-brand to-accent origin-left"
-            />
+          {/* Barra de progreso superior en Desktop (sin atravesar texto) */}
+          <div className="relative mb-10 hidden w-full lg:block pointer-events-none">
+            <div className="h-[3px] w-full rounded-full bg-border/60 overflow-hidden">
+              <motion.div
+                variants={lineHorizontalVariants}
+                className="h-full w-full rounded-full bg-gradient-to-r from-brand via-brand to-accent origin-left"
+              />
+            </div>
+            <div className="absolute -top-[5px] left-0 flex w-full justify-between px-2">
+              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background" />
+              <span className="h-3 w-3 rounded-full bg-brand ring-4 ring-background" />
+              <span className="h-3 w-3 rounded-full bg-accent ring-4 ring-background" />
+            </div>
           </div>
 
-          {/* Línea vertical en Mobile */}
-          <div className="absolute top-4 left-3 block w-[2px] h-[calc(100%-2rem)] bg-border/60 lg:hidden pointer-events-none">
+          {/* Línea vertical limpia en Mobile a la izquierda (offset sin pisar texto) */}
+          <div className="absolute top-2 left-0 block w-[2px] h-[calc(100%-1rem)] bg-border/60 lg:hidden pointer-events-none">
             <motion.div
               variants={lineVerticalVariants}
-              className="w-full h-full bg-gradient-to-b from-brand/40 via-brand to-accent origin-top"
+              className="w-full h-full bg-gradient-to-b from-brand via-brand to-accent origin-top"
             />
           </div>
 
-          <div className="flex flex-col gap-10 pl-8 lg:flex-row lg:items-start lg:gap-6 lg:pl-0">
-            {PASOS.map((paso, index) => (
-              <Fragment key={paso.numero}>
-                <motion.div variants={item} className="group relative flex-1">
-                  <p className="text-5xl font-bold text-brand/25 transition-colors duration-300 group-hover:text-brand select-none">
-                    {paso.numero}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold text-foreground">
-                    <FoldText
-                      text={paso.titulo}
-                      splitBy="word"
-                      stagger={0.04}
-                      trigger="scroll"
-                      hinge="top"
-                      fontSize="inherit"
-                      fontWeight="inherit"
-                      color="inherit"
-                    />
-                  </h3>
-                  <p className="mt-2 max-w-xs text-sm leading-6 text-foreground/70">
-                    {paso.descripcion}
-                  </p>
-                </motion.div>
+          <div className="flex flex-col gap-10 pl-6 lg:flex-row lg:items-start lg:gap-6 lg:pl-0">
+            {PASOS.map((paso, index) => {
+              const IconoPaso = paso.icono;
 
-                {/* Flecha impulsora entre pasos (Desktop) */}
-                {index < PASOS.length - 1 && (
-                  <div className="hidden shrink-0 items-center justify-center self-center lg:flex lg:mt-2">
-                    <motion.div
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <ArrowRightIcon className="h-5 w-5 text-brand/35 transition-colors group-hover:text-brand" />
-                    </motion.div>
-                  </div>
-                )}
-              </Fragment>
-            ))}
+              return (
+                <Fragment key={paso.numero}>
+                  <motion.div variants={item} className="group relative flex-1">
+                    <div className="flex items-center gap-3">
+                      <p className="text-4xl font-bold text-brand/25 transition-all duration-300 group-hover:scale-105 group-hover:text-brand select-none">
+                        {paso.numero}
+                      </p>
+                      <div className="flex items-center gap-1.5 rounded-full bg-brand/5 px-2.5 py-1 text-xs font-semibold text-brand">
+                        <IconoPaso className="h-3.5 w-3.5" />
+                        <span>{paso.tag}</span>
+                      </div>
+                    </div>
+
+                    <h3 className="mt-3 text-xl font-semibold text-foreground">
+                      <FoldText
+                        text={paso.titulo}
+                        splitBy="word"
+                        stagger={0.04}
+                        trigger="scroll"
+                        hinge="top"
+                        fontSize="inherit"
+                        fontWeight="inherit"
+                        color="inherit"
+                      />
+                    </h3>
+                    <p className="mt-2 max-w-xs text-sm leading-6 text-foreground/70">
+                      {paso.descripcion}
+                    </p>
+                  </motion.div>
+
+                  {/* Flecha impulsora entre pasos (Desktop) */}
+                  {index < PASOS.length - 1 && (
+                    <div className="hidden shrink-0 items-center justify-center self-center lg:flex lg:mt-6">
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRightIcon className="h-5 w-5 text-brand/35 transition-colors group-hover:text-brand" />
+                      </motion.div>
+                    </div>
+                  )}
+                </Fragment>
+              );
+            })}
           </div>
         </div>
       </motion.div>
