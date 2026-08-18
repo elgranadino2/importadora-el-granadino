@@ -55,7 +55,7 @@ export default function Fabricacion() {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-20px" }}
         variants={container}
         className="mx-auto max-w-5xl px-6 py-24 sm:py-32"
       >

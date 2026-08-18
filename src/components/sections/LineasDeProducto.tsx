@@ -118,7 +118,7 @@ export default function LineasDeProducto() {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-20px" }}
           variants={container}
           className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >

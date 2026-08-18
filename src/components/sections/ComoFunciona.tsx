@@ -71,7 +71,7 @@ export default function ComoFunciona() {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-20px" }}
         variants={container}
         className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32"
       >

@@ -2,9 +2,6 @@
 
 import { useEffect, useMemo, useRef, type CSSProperties, type ReactNode } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 type HingeSide = "top" | "bottom" | "left" | "right";
 type SplitBy = "char" | "word" | "line";
@@ -67,6 +64,7 @@ export default function FoldText({
 }: FoldTextProps) {
   const rootRef = useRef<HTMLSpanElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const hasAnimatedRef = useRef(false);
   const hingeConfig = HINGE_CONFIG[hinge] || HINGE_CONFIG.top;
   const safeCrease = clamp(creaseShading, 0, 1);
   const safePerspective = Math.max(120, perspective);
@@ -128,6 +126,7 @@ export default function FoldText({
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     const activeDuration = reduceMotion ? Math.min(duration, 0.22) : duration;
     const activeStagger = reduceMotion ? Math.min(stagger, 0.02) : stagger;
+
     const fromVars = {
       opacity: 0,
       rotateX: reduceMotion ? 0 : hingeConfig.rotateX,
@@ -160,30 +159,49 @@ export default function FoldText({
       return timelineRef.current;
     };
 
-    let scrollTrigger: ScrollTrigger | undefined;
+    // Prepare initial hidden state for mount & scroll triggers
+    if (trigger === "scroll" || trigger === "mount") {
+      gsap.set(pieces, fromVars);
+    }
+
+    let observer: IntersectionObserver | undefined;
     let hoverHandler: (() => void) | undefined;
+    let timerId: ReturnType<typeof setTimeout> | undefined;
 
     if (trigger === "hover") {
       gsap.set(pieces, { opacity: 1, rotateX: 0, rotateY: 0, "--fold-crease": 0, transformOrigin: hingeConfig.origin });
       hoverHandler = () => play(false);
       root.addEventListener("mouseenter", hoverHandler);
     } else if (trigger === "scroll") {
-      gsap.set(pieces, fromVars);
-      scrollTrigger = ScrollTrigger.create({
-        trigger: root,
-        start: "top 82%",
-        once: true,
-        onEnter: () => play(false),
-      });
+      // Use native IntersectionObserver for 100% reliable scroll trigger on mobile & desktop
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasAnimatedRef.current) {
+              hasAnimatedRef.current = true;
+              timerId = setTimeout(() => {
+                play(false);
+              }, 40);
+              observer?.disconnect();
+            }
+          });
+        },
+        { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
+      );
+      observer.observe(root);
     } else if (trigger === "loop") {
       play(true);
     } else {
-      play(false);
+      // "mount": micro-task delay ensures fonts and layout render before starting word unfold
+      timerId = setTimeout(() => {
+        play(false);
+      }, 50);
     }
 
     return () => {
+      if (timerId) clearTimeout(timerId);
       if (hoverHandler) root.removeEventListener("mouseenter", hoverHandler);
-      scrollTrigger?.kill();
+      observer?.disconnect();
       killTimeline();
     };
   }, [
@@ -217,3 +235,4 @@ export default function FoldText({
     </span>
   );
 }
+

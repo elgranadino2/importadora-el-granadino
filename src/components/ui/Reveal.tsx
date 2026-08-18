@@ -19,7 +19,7 @@ export function Reveal({ children, ...props }: HTMLMotionProps<"div">) {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-20px" }}
       variants={reduceMotion ? undefined : variants}
       {...props}
     >
