@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 import FoldText from "@/components/ui/FoldText";
 import CheckCircleIcon from "@/components/icons/CheckCircleIcon";
@@ -13,22 +14,48 @@ const CONTRAS = [
   "No sabés quién fabrica lo que estás comprando",
 ];
 
-// "Producción garantizada" es un claim textual del propio arte publicitario
-// del cliente (Ref-01) — se reutiliza, no se inventa.
 const PROS = [
-  "Precio de fábrica, sin sobrecosto",
+  "Precio de fábrica, sin sobrecosto ni recargos",
   "Producción garantizada — fabricamos lo que vendemos",
   "Respuesta directa por WhatsApp, sin intermediarios",
-  "Despacho a nivel nacional",
+  "Despacho asegurado a nivel nacional",
 ];
 
-// Números reales y verificables — no hay cifras de negocio (años, clientes,
-// facturación) confirmadas todavía, así que no se inventan.
 const STATS = [
-  { valor: "5", label: "Líneas de producto" },
-  { valor: "4", label: "Sectores atendidos" },
-  { valor: "0", label: "Intermediarios" },
+  { target: 5, label: "Líneas de producto activas" },
+  { target: 4, label: "Sectores comerciales atendidos" },
+  { target: 0, label: "Intermediarios en tu compra" },
 ];
+
+function StatCounter({ target, label }: { target: number; label: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  useEffect(() => {
+    if (!isInView || target === 0) return;
+
+    let start = 0;
+    const duration = 1000;
+    const stepTime = Math.max(Math.floor(duration / target), 80);
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start >= target) clearInterval(timer);
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [isInView, target]);
+
+  return (
+    <div ref={ref} className="group flex flex-col">
+      <p className="text-4xl font-extrabold tracking-tight text-brand transition-colors group-hover:text-accent">
+        {target === 0 ? "0" : `${count}`}
+      </p>
+      <p className="mt-1 text-sm font-medium text-foreground/70">{label}</p>
+    </div>
+  );
+}
 
 export default function Fabricacion() {
   const reduceMotion = useReducedMotion();
@@ -60,12 +87,12 @@ export default function Fabricacion() {
         className="mx-auto max-w-5xl px-6 py-24 sm:py-32"
       >
         <motion.div variants={item} className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-            Fabricante, no intermediario
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/5 px-3 py-1 text-xs font-semibold text-brand">
+            <span>Fabricante directo · Medellín, Colombia</span>
+          </div>
           <h2
             id="fabricacion-heading"
-            className="section-h2 mt-3 tracking-tight text-balance text-foreground"
+            className="section-h2 mt-4 tracking-tight text-balance text-foreground"
           >
             <FoldText
               text="Le compras a quien fabrica, no a quien revende"
@@ -85,77 +112,88 @@ export default function Fabricacion() {
           </p>
         </motion.div>
 
+        {/* Tabla comparativa de alto contraste CRO */}
         <motion.div
           variants={item}
-          className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2"
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8"
         >
-          <div className="bg-background p-8">
-            <p className="text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-              <FoldText
-                text="Con un intermediario"
-                splitBy="word"
-                stagger={0.04}
-                trigger="scroll"
-                hinge="top"
-                fontSize="inherit"
-                fontWeight="inherit"
-                color="inherit"
-              />
-            </p>
-            <ul className="mt-6 space-y-4">
-              {CONTRAS.map((c) => (
-                <li key={c} className="flex items-start gap-3 text-sm text-foreground/70">
-                  <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-foreground/30" />
-                  {c}
-                </li>
-              ))}
-            </ul>
+          {/* Lado Intermediario (Fricción) */}
+          <div className="flex flex-col justify-between rounded-2xl border border-red-500/15 bg-red-500/[0.02] p-8 transition-all duration-300 hover:border-red-500/30">
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-red-600 uppercase">
+                <FoldText
+                  text="Con un intermediario"
+                  splitBy="word"
+                  stagger={0.04}
+                  trigger="scroll"
+                  hinge="top"
+                  fontSize="inherit"
+                  fontWeight="inherit"
+                  color="inherit"
+                />
+              </p>
+              <ul className="mt-6 space-y-4">
+                {CONTRAS.map((c) => (
+                  <li key={c} className="flex items-start gap-3 text-sm text-foreground/70">
+                    <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-red-500/70" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="bg-brand/[0.03] p-8">
-            <p className="text-xs font-semibold tracking-widest text-brand uppercase">
-              <FoldText
-                text="Comprando directo a El Granadino"
-                splitBy="word"
-                stagger={0.04}
-                trigger="scroll"
-                hinge="top"
-                fontSize="inherit"
-                fontWeight="inherit"
-                color="inherit"
-              />
-            </p>
-            <ul className="mt-6 space-y-4">
-              {PROS.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-sm font-medium text-foreground">
-                  <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                  {p}
-                </li>
-              ))}
-            </ul>
+          {/* Lado El Granadino (Ganador) */}
+          <div className="group flex flex-col justify-between rounded-2xl border border-brand bg-brand p-8 text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <div>
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold tracking-widest text-accent uppercase">
+                  <FoldText
+                    text="Comprando directo a El Granadino"
+                    splitBy="word"
+                    stagger={0.04}
+                    trigger="scroll"
+                    hinge="top"
+                    fontSize="inherit"
+                    fontWeight="inherit"
+                    color="inherit"
+                  />
+                </p>
+                <span className="rounded-full bg-accent/20 px-2.5 py-0.5 text-[11px] font-semibold text-accent">
+                  Mejor opción
+                </span>
+              </div>
+
+              <ul className="mt-6 space-y-4">
+                {PROS.map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-sm font-medium text-white/95">
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
 
+        {/* Cita & Contadores Animados */}
         <motion.div
           variants={item}
-          className="mt-16 grid gap-10 border-t border-border pt-14 lg:grid-cols-[1.4fr_1fr] lg:items-start"
+          className="mt-16 grid gap-10 border-t border-border pt-14 lg:grid-cols-[1.4fr_1fr] lg:items-center"
         >
-          <blockquote>
+          <blockquote className="relative">
             <p className="text-2xl leading-snug font-medium tracking-tight text-balance text-foreground sm:text-3xl">
               &ldquo;Somos fabricantes de productos para motos, ferretería,
               cacharrería y remates.&rdquo;
             </p>
             <footer className="mt-4 text-sm font-medium text-foreground/70">
-              — El Granadino
+              — El Granadino · Medellín, Colombia
             </footer>
           </blockquote>
 
-          <div className="flex gap-8 sm:gap-10 lg:flex-col lg:gap-6 lg:border-l lg:border-border lg:pl-8">
+          <div className="flex flex-wrap gap-8 sm:gap-10 lg:flex-col lg:gap-6 lg:border-l lg:border-border lg:pl-8">
             {STATS.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl font-bold text-foreground">{stat.valor}</p>
-                <p className="mt-1 text-sm text-foreground/70">{stat.label}</p>
-              </div>
+              <StatCounter key={stat.label} target={stat.target} label={stat.label} />
             ))}
           </div>
         </motion.div>
