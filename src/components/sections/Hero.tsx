@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 import FoldText from "@/components/ui/FoldText";
@@ -7,16 +8,16 @@ import ChevronDownIcon from "@/components/icons/ChevronDownIcon";
 
 const EASE_FLUID = [0.16, 1, 0.3, 1] as const;
 
-const QUICK_TEASERS = [
-  { label: "Pijamas para moto", id: "lineas" },
-  { label: "Pulpos & Mallas", id: "lineas" },
-  { label: "Impermeables", id: "lineas" },
-  { label: "Eslaiders", id: "lineas" },
-  { label: "Mallas vehículo", id: "lineas" },
-];
-
 export default function Hero() {
   const reduceMotion = useReducedMotion();
+
+  const handleScrollToFabricacion = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("fabricacion");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const container: Variants = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : -36 },
@@ -44,7 +45,7 @@ export default function Hero() {
     // invitar al scroll sin llenar el viewport entero.
     <section className="relative flex min-h-[calc(100svh-6rem)] flex-col overflow-hidden bg-background">
       <div aria-hidden className="hero-dots absolute inset-0" />
-      {/* 2. Luz Ambiental Respirable en el Fondo */}
+      {/* Luz Ambiental Respirable en el Fondo */}
       <div
         aria-hidden
         className="hero-ambient-glow pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(20,51,92,0.08),transparent_70%)]"
@@ -57,13 +58,13 @@ export default function Hero() {
         className="relative mx-auto flex flex-1 max-w-3xl flex-col items-center justify-center px-6 py-14 text-center sm:py-20"
       >
         <motion.div variants={item} className="flex flex-col items-center gap-2">
-          {/* 1. Badge de Estado en Vivo */}
+          {/* Badge de Despachos a nivel nacional */}
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/5 px-3 py-1 text-xs font-semibold text-brand backdrop-blur-xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            <span>Producción activa · Despachos a todo el país</span>
+            <span>Despachos a todo el país</span>
           </span>
 
           <p className="mt-2 text-base font-bold tracking-tight text-brand">
@@ -118,7 +119,6 @@ export default function Hero() {
           todo el país.
         </motion.p>
 
-        {/* 3. Destello Shine-Sweep en el CTA */}
         <motion.div variants={item} className="mt-8 flex flex-col items-center">
           <WhatsappCtaButton tag="hero" className="px-8 py-3.5 text-base">
             Cotizar mi pedido
@@ -126,25 +126,16 @@ export default function Hero() {
           <p className="mt-3 text-sm text-foreground/70">
             Respuesta directa por WhatsApp
           </p>
-
-          {/* 4. Chips de Vista Rápida de Líneas */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-1.5 max-w-lg">
-            {QUICK_TEASERS.map((teaser) => (
-              <a
-                key={teaser.label}
-                href={`#${teaser.id}`}
-                className="inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs font-medium text-foreground/75 transition-all duration-200 hover:scale-[1.04] hover:border-brand/30 hover:bg-brand/5 hover:text-brand active:scale-[0.96]"
-              >
-                <span>{teaser.label}</span>
-              </a>
-            ))}
-          </div>
+          <p className="mt-6 text-xs text-foreground/70">
+            Fabricación nacional · Despachos a todo el país
+          </p>
         </motion.div>
 
-        {/* 5. Micro-Indicador de Scroll */}
+        {/* Micro-Indicador de Scroll ultra-fluido */}
         <motion.div variants={item} className="mt-8">
           <a
             href="#fabricacion"
+            onClick={handleScrollToFabricacion}
             aria-label="Conocer más sobre fabricación"
             className="group flex flex-col items-center gap-1 text-xs font-medium text-foreground/50 transition-colors hover:text-brand"
           >
