@@ -256,7 +256,7 @@ function Navbar() {
                   onFocus={() => handleEnter(link.id)}
                   onBlur={handleLeave}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative z-10 block rounded-full px-3 py-2.5 text-xs font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:px-4 md:py-2.5 md:text-sm ${
+                  className={`relative z-10 block rounded-full px-2.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:px-4 md:py-2.5 md:text-sm ${
                     isTarget ? "text-background" : "text-foreground/70"
                   }`}
                 >
@@ -278,7 +278,8 @@ function Navbar() {
         <motion.div variants={itemVariants} className="relative shrink-0">
           <WhatsappCtaButton
             tag="navbar"
-            className="min-h-11 px-4 py-2.5 text-xs md:px-5 md:py-2.5 md:text-sm"
+            showArrow={false}
+            className="min-h-9 px-3 py-1.5 text-xs md:min-h-11 md:px-5 md:py-2.5 md:text-sm"
           >
             Cotizar
           </WhatsappCtaButton>
