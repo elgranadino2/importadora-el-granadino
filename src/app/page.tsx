@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <LineasDeProducto />
       <Fabricacion />
+      <LineasDeProducto />
       <ComoFunciona />
       <FAQ />
       <CtaFinal />

@@ -53,7 +53,7 @@ export default function FAQ() {
     <section
       id="preguntas"
       aria-labelledby="preguntas-heading"
-      className="border-t border-border bg-background"
+      className="scroll-mt-28 border-t border-border bg-background"
     >
       <script
         type="application/ld+json"
@@ -85,7 +85,7 @@ export default function FAQ() {
               href={buildWhatsappLink({ tag: "faq" })}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-brand transition-colors hover:text-brand/70"
+              className="font-semibold text-brand transition-colors hover:text-brand/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               Escribinos por WhatsApp
             </a>{" "}
@@ -123,7 +123,7 @@ function FAQItem({
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left"
+        className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
       >
         <span className="text-base font-semibold text-foreground md:text-lg">
           {faq.question}

@@ -21,14 +21,16 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-background">
+    // min-h deja asomar ~96px de la siguiente sección (sliver, agent-01) para
+    // invitar al scroll sin llenar el viewport entero.
+    <section className="relative flex min-h-[calc(100svh-6rem)] flex-col overflow-hidden bg-background">
       <div aria-hidden className="hero-dots absolute inset-0" />
 
       <motion.div
         initial="hidden"
         animate="show"
         variants={container}
-        className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-24 text-center sm:py-32"
+        className="relative mx-auto flex flex-1 max-w-3xl flex-col items-center justify-center px-6 py-16 text-center sm:py-20"
       >
         <motion.div variants={item}>
           <p className="text-base font-bold tracking-tight text-brand">

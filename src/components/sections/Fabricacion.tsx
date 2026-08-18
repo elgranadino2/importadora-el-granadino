@@ -50,7 +50,7 @@ export default function Fabricacion() {
     <section
       id="fabricacion"
       aria-labelledby="fabricacion-heading"
-      className="border-t border-border bg-background"
+      className="relative z-10 scroll-mt-28 rounded-t-3xl border-t border-border bg-background shadow-[0_-8px_32px_rgba(18,24,31,0.05)]"
     >
       <motion.div
         initial="hidden"
@@ -143,8 +143,8 @@ export default function Fabricacion() {
         </motion.div>
 
         <motion.div variants={item} className="mt-12">
-          <WhatsappCtaButton tag="fabricacion" className="px-5 py-2.5 text-sm">
-            Hablar con nosotros
+          <WhatsappCtaButton tag="fabricacion" className="min-h-11 px-5 py-2.5 text-sm">
+            Cotizar al por mayor
           </WhatsappCtaButton>
         </motion.div>
       </motion.div>

@@ -1,8 +1,8 @@
 import { buildWhatsappLink } from "@/lib/whatsapp";
 
 const NAV_LINKS = [
-  { label: "Líneas de producto", href: "#lineas" },
   { label: "Fabricación", href: "#fabricacion" },
+  { label: "Líneas de producto", href: "#lineas" },
   { label: "Cómo funciona", href: "#como-funciona" },
   { label: "Preguntas frecuentes", href: "#preguntas" },
 ];
@@ -28,7 +28,7 @@ export function Footer() {
               href={buildWhatsappLink({ tag: "footer" })}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-sm font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+              className="mt-4 inline-block text-sm font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
             >
               Escribinos por WhatsApp
             </a>
@@ -45,7 +45,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
+                    className="text-sm text-white/70 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
                   >
                     {link.label}
                   </a>

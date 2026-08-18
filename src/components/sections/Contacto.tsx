@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 import FoldText from "@/components/ui/FoldText";
-import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { buildWhatsappLink } from "@/lib/whatsapp";
 
 const NUMERO_LEGIBLE = "+57 310 606 9871";
 
@@ -12,7 +12,7 @@ export default function Contacto() {
     <section
       id="contacto"
       aria-labelledby="contacto-heading"
-      className="border-t border-border bg-background"
+      className="scroll-mt-28 border-t border-border bg-background"
     >
       <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
         <Reveal>
@@ -36,7 +36,7 @@ export default function Contacto() {
             esperas.
           </p>
           <div className="mt-8">
-            <WhatsappCtaButton tag="contacto" className="px-6 py-3 text-sm">
+            <WhatsappCtaButton tag="contacto" className="min-h-11 px-6 py-3 text-sm">
               Escribir por WhatsApp
             </WhatsappCtaButton>
           </div>
@@ -48,10 +48,10 @@ export default function Contacto() {
               Contacto
             </p>
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={buildWhatsappLink({ tag: "contacto-numero" })}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 block text-lg font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand"
+              className="mt-4 block text-lg font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               {NUMERO_LEGIBLE}
             </a>

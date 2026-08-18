@@ -46,7 +46,7 @@ export default function ComoFunciona() {
     <section
       id="como-funciona"
       aria-labelledby="como-funciona-heading"
-      className="relative overflow-hidden border-t border-border bg-background"
+      className="relative overflow-hidden scroll-mt-28 border-t border-border bg-background"
     >
       <div
         aria-hidden

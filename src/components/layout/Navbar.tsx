@@ -17,8 +17,8 @@ import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 // completo, lead magnet) van al footer cuando existan, no acá. Contacto no es
 // un link de la nav: es el CTA, y abre WhatsApp directo, no ancla a sección.
 const LINKS = [
-  { label: "Líneas", id: "lineas" },
   { label: "Fabricación", id: "fabricacion" },
+  { label: "Líneas", id: "lineas" },
   { label: "Preguntas", id: "preguntas" },
 ];
 
@@ -276,7 +276,7 @@ function Navbar() {
         <motion.div variants={itemVariants} className="relative shrink-0">
           <WhatsappCtaButton
             tag="navbar"
-            className="px-4 py-2.5 text-xs md:px-5 md:py-2.5 md:text-sm"
+            className="min-h-11 px-4 py-2.5 text-xs md:px-5 md:py-2.5 md:text-sm"
           >
             Cotizar
           </WhatsappCtaButton>
