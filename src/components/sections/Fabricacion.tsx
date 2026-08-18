@@ -112,15 +112,15 @@ export default function Fabricacion() {
           </p>
         </motion.div>
 
-        {/* Tabla comparativa de alto contraste CRO */}
+        {/* Tabla comparativa sobria con diseño claro armonizado */}
         <motion.div
           variants={item}
           className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8"
         >
-          {/* Lado Intermediario (Fricción) */}
-          <div className="flex flex-col justify-between rounded-2xl border border-red-500/15 bg-red-500/[0.02] p-8 transition-all duration-300 hover:border-red-500/30">
+          {/* Lado Intermediario */}
+          <div className="flex flex-col justify-between rounded-2xl border border-border bg-background p-8 shadow-2xs transition-all duration-300">
             <div>
-              <p className="text-xs font-semibold tracking-widest text-red-600 uppercase">
+              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
                 <FoldText
                   text="Con un intermediario"
                   splitBy="word"
@@ -135,7 +135,7 @@ export default function Fabricacion() {
               <ul className="mt-6 space-y-4">
                 {CONTRAS.map((c) => (
                   <li key={c} className="flex items-start gap-3 text-sm text-foreground/70">
-                    <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-red-500/70" />
+                    <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-foreground/35" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -143,11 +143,11 @@ export default function Fabricacion() {
             </div>
           </div>
 
-          {/* Lado El Granadino (Ganador) */}
-          <div className="group flex flex-col justify-between rounded-2xl border border-brand bg-brand p-8 text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+          {/* Lado El Granadino (Destacado sutil en fondo claro) */}
+          <div className="group flex flex-col justify-between rounded-2xl border border-brand/30 bg-brand/[0.04] p-8 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-md">
             <div>
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold tracking-widest text-accent uppercase">
+                <p className="text-xs font-semibold tracking-widest text-brand uppercase">
                   <FoldText
                     text="Comprando directo a El Granadino"
                     splitBy="word"
@@ -159,15 +159,15 @@ export default function Fabricacion() {
                     color="inherit"
                   />
                 </p>
-                <span className="rounded-full bg-accent/20 px-2.5 py-0.5 text-[11px] font-semibold text-accent">
-                  Mejor opción
+                <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand">
+                  Directo de fábrica
                 </span>
               </div>
 
               <ul className="mt-6 space-y-4">
                 {PROS.map((p) => (
-                  <li key={p} className="flex items-start gap-3 text-sm font-medium text-white/95">
-                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                  <li key={p} className="flex items-start gap-3 text-sm font-medium text-foreground">
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
                     <span>{p}</span>
                   </li>
                 ))}
