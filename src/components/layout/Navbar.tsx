@@ -19,6 +19,7 @@ import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 const LINKS = [
   { label: "Fabricación", id: "fabricacion" },
   { label: "Líneas", id: "lineas" },
+  { label: "Pasos", id: "como-funciona" },
   { label: "Preguntas", id: "preguntas" },
 ];
 
