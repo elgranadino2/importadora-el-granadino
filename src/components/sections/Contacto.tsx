@@ -53,41 +53,44 @@ export default function Contacto() {
           </div>
         </Reveal>
 
-        {/* Tarjetas de acción táctil interactivas (Mobile First & Cero AI Slop) */}
-        <Reveal className="mt-16 grid gap-6 border-t border-border pt-14 sm:grid-cols-2 lg:gap-8">
-          <motion.a
-            href={buildWhatsappLink({ tag: "contacto-numero" })}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileTap={{ scale: 0.98 }}
-            className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-2xs transition-all duration-300 hover:border-brand/30 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        {/* Elementos flotantes sin cajas de tarjeta */}
+        <Reveal className="mt-16 grid gap-10 border-t border-border pt-14 sm:grid-cols-2 lg:gap-12">
+          <motion.div
+            whileHover={{ y: -3 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="group relative"
           >
-            <div>
-              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
-                Contacto directo
-              </p>
-              <p className="mt-3 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-3xl">
-                {NUMERO_LEGIBLE}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-foreground/70">
-                Respuesta directa por WhatsApp sin intermediarios ni esperas.
-              </p>
-            </div>
-          </motion.a>
+            <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
+              Contacto directo
+            </p>
+            <a
+              href={buildWhatsappLink({ tag: "contacto-numero" })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-2xl font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-brand sm:text-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {NUMERO_LEGIBLE}
+            </a>
+            <p className="mt-2 max-w-sm text-sm leading-6 text-foreground/70">
+              Respuesta directa por WhatsApp sin intermediarios ni esperas.
+            </p>
+          </motion.div>
 
-          <div className="flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-2xs transition-all duration-300">
-            <div>
-              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
-                Cobertura y despacho
-              </p>
-              <p className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                Medellín, Colombia
-              </p>
-              <p className="mt-2 text-sm leading-6 text-foreground/70">
-                Fabricación local con envíos diarios asegurados a todo el país.
-              </p>
-            </div>
-          </div>
+          <motion.div
+            whileHover={{ y: -3 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="group relative"
+          >
+            <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
+              Cobertura y despacho
+            </p>
+            <p className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Medellín, Colombia
+            </p>
+            <p className="mt-2 max-w-sm text-sm leading-6 text-foreground/70">
+              Fabricación local con envíos diarios asegurados a todo el país.
+            </p>
+          </motion.div>
         </Reveal>
       </div>
     </section>

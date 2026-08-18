@@ -7,22 +7,19 @@ type QualifiedMessage = {
 };
 
 /** Arma el link de wa.me con el mensaje pre-cargado y la etiqueta de origen. */
-export function buildWhatsappLink({ linea, ciudad, tag }: QualifiedMessage): string {
-  const lines = ["Hola El Granadino 👋"];
+export function buildWhatsappLink({ linea, ciudad }: QualifiedMessage): string {
+  const lines = ["Hola El Granadino, soy distribuidor y quiero cotizar productos al por mayor."];
 
   if (linea && ciudad) {
-    lines.push(`Soy distribuidor y me interesa la línea: ${linea}`);
+    lines.push(`Línea de interés: ${linea}`);
     lines.push(`Ciudad: ${ciudad}`);
     lines.push(
-      "¿Me pueden pasar la lista mayorista y la cantidad mínima de pedido?"
+      "¿Me pueden brindar la lista mayorista y cantidad mínima de pedido?"
     );
   } else {
-    lines.push("Soy distribuidor y quiero cotizar productos al por mayor.");
     if (linea) lines.push(`Línea de interés: ${linea}`);
     if (ciudad) lines.push(`Ciudad: ${ciudad}`);
   }
-
-  lines.push("", `[web · ${tag}]`);
 
   const text = encodeURIComponent(lines.join("\n"));
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
