@@ -23,7 +23,7 @@ const FAQS: FAQItem[] = [
   },
   {
     question: "¿Venden al detal o solo al por mayor?",
-    answer: "Trabajamos con distribuidores — ventas al por mayor.",
+    answer: "Trabajamos con distribuidores, ventas al por mayor.",
   },
   {
     question: "¿Hacen envíos a todo el país?",
@@ -32,7 +32,7 @@ const FAQS: FAQItem[] = [
   {
     question: "¿Tienen tienda física?",
     answer:
-      "No — trabajamos solo por pedido y despacho, sin local físico. Todo el proceso es por WhatsApp.",
+      "No, trabajamos solo por pedido y despacho, sin local físico. Todo el proceso es por WhatsApp.",
   },
 ];
 
