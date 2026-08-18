@@ -9,14 +9,19 @@ export default function Hero() {
 
   const container: Variants = {
     hidden: {},
-    show: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } },
+    show: {
+      transition: {
+        delayChildren: reduceMotion ? 0 : 0.35,
+        staggerChildren: reduceMotion ? 0 : 0.14,
+      },
+    },
   };
   const item: Variants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 20 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: reduceMotion ? 0 : 0.5, ease: [0.4, 0, 0.2, 1] },
+      transition: { duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -25,6 +30,7 @@ export default function Hero() {
     // invitar al scroll sin llenar el viewport entero.
     <section className="relative flex min-h-[calc(100svh-6rem)] flex-col overflow-hidden bg-background">
       <div aria-hidden className="hero-dots absolute inset-0" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(20,51,92,0.06),transparent_70%)]" />
 
       <motion.div
         initial="hidden"
