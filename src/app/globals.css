@@ -156,4 +156,58 @@ body {
   .fold-text-piece::after {
     opacity: 0 !important;
   }
+
+  .hero-ambient-glow {
+    animation: none !important;
+  }
 }
+
+/* Ambient glow respirable en el fondo del Hero */
+@keyframes ambientBreathe {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15) translateY(-8px);
+    opacity: 0.95;
+  }
+}
+
+.hero-ambient-glow {
+  animation: ambientBreathe 7s ease-in-out infinite;
+}
+
+/* Destello Shine-Sweep para los botones CTA */
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.cta-shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-shine-sweep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shineSweep 0.85s ease-in-out 0.8s 1 forwards;
+  pointer-events: none;
+}
+
