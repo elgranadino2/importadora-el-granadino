@@ -53,48 +53,38 @@ export default function Contacto() {
           </div>
         </Reveal>
 
-        {/* Tarjetas de acción táctil interactivas (Mobile First) */}
+        {/* Tarjetas de acción táctil interactivas (Mobile First & Cero AI Slop) */}
         <Reveal className="mt-16 grid gap-6 border-t border-border pt-14 sm:grid-cols-2 lg:gap-8">
           <motion.a
             href={buildWhatsappLink({ tag: "contacto-numero" })}
             target="_blank"
             rel="noopener noreferrer"
             whileTap={{ scale: 0.98 }}
-            className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-2xs transition-all duration-300 hover:border-brand/30 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-2xs transition-all duration-300 hover:border-brand/30 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <div>
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
-                  Contacto directo
-                </p>
-                <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand">
-                  ⚡ Respuesta en minutos
-                </span>
-              </div>
-              <p className="mt-4 text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-2xl">
+              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
+                Contacto directo
+              </p>
+              <p className="mt-3 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-3xl">
                 {NUMERO_LEGIBLE}
               </p>
               <p className="mt-2 text-sm leading-6 text-foreground/70">
-                Llama o escribe por WhatsApp. Sin intermediarios ni demoras.
+                Respuesta directa por WhatsApp sin intermediarios ni esperas.
               </p>
             </div>
           </motion.a>
 
-          <div className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-2xs transition-all duration-300">
+          <div className="flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-2xs transition-all duration-300">
             <div>
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
-                  Cobertura comercial
-                </p>
-                <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-semibold text-brand">
-                  🇨🇴 Despachos diarios
-                </span>
-              </div>
-              <p className="mt-4 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
+                Cobertura y despacho
+              </p>
+              <p className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 Medellín, Colombia
               </p>
               <p className="mt-2 text-sm leading-6 text-foreground/70">
-                Fabricación local y despachos asegurados a todo el país.
+                Fabricación local con envíos diarios asegurados a todo el país.
               </p>
             </div>
           </div>
