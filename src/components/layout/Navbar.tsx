@@ -38,6 +38,7 @@ const PILL_SPRING = {
 } as const;
 
 const IOS_EASE = [0.4, 0, 0.2, 1] as const;
+const EASE_FLUID = [0.16, 1, 0.3, 1] as const;
 
 function Navbar() {
   const reduceMotion = useReducedMotion();
@@ -47,15 +48,16 @@ function Navbar() {
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const targetRef = useRef<string | null>(null);
 
-  // Entrada al cargar: el contenedor aparece y los items caen escalonados.
+  // Entrada al cargar: el contenedor cae desde arriba y los items se despliegan escalonados.
   const containerVariants = {
-    hidden: { opacity: 0, scale: 0.96 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : -24, scale: 0.98 },
     visible: {
       opacity: 1,
+      y: 0,
       scale: 1,
       transition: {
-        duration: reduceMotion ? 0 : 0.4,
-        ease: IOS_EASE,
+        duration: reduceMotion ? 0 : 0.6,
+        ease: EASE_FLUID,
         staggerChildren: reduceMotion ? 0 : 0.06,
       },
     },

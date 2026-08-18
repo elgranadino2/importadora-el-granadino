@@ -4,24 +4,29 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import WhatsappCtaButton from "@/components/ui/WhatsappCtaButton";
 import FoldText from "@/components/ui/FoldText";
 
+const EASE_FLUID = [0.16, 1, 0.3, 1] as const;
+
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   const container: Variants = {
-    hidden: {},
+    hidden: { opacity: 0, y: reduceMotion ? 0 : -36 },
     show: {
+      opacity: 1,
+      y: 0,
       transition: {
-        delayChildren: reduceMotion ? 0 : 0.35,
-        staggerChildren: reduceMotion ? 0 : 0.14,
+        duration: reduceMotion ? 0 : 0.7,
+        ease: EASE_FLUID,
+        staggerChildren: reduceMotion ? 0 : 0.12,
       },
     },
   };
   const item: Variants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 20 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : -16 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: reduceMotion ? 0 : 0.55, ease: EASE_FLUID },
     },
   };
 

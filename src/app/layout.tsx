@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import InitialPageCurtain from "@/components/ui/InitialPageCurtain";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -56,7 +55,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <InitialPageCurtain />
         <Navbar />
         {children}
         <Footer />
