@@ -112,15 +112,15 @@ export default function Fabricacion() {
           </p>
         </motion.div>
 
-        {/* Tabla comparativa sobria con diseño claro armonizado */}
+        {/* Tabla comparativa CRO con alto contraste y micro-interacciones de nivel producción */}
         <motion.div
           variants={item}
           className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8"
         >
-          {/* Lado Intermediario */}
-          <div className="flex flex-col justify-between rounded-2xl border border-border bg-background p-8 shadow-2xs transition-all duration-300">
+          {/* Lado Intermediario (Fricción / Rojo sutil) */}
+          <div className="flex flex-col justify-between rounded-2xl border border-red-500/20 bg-red-500/[0.02] p-8 transition-colors duration-300">
             <div>
-              <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase">
+              <p className="text-xs font-semibold tracking-widest text-red-600 uppercase">
                 <FoldText
                   text="Con un intermediario"
                   splitBy="word"
@@ -134,20 +134,24 @@ export default function Fabricacion() {
               </p>
               <ul className="mt-6 space-y-4">
                 {CONTRAS.map((c) => (
-                  <li key={c} className="flex items-start gap-3 text-sm text-foreground/70">
-                    <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-foreground/35" />
+                  <motion.li
+                    key={c}
+                    whileHover={{ x: 2 }}
+                    className="group flex items-start gap-3 text-sm text-foreground/75"
+                  >
+                    <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-red-500/80 transition-transform duration-200 group-hover:-rotate-12" />
                     <span>{c}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Lado El Granadino (Destacado sutil en fondo claro) */}
-          <div className="group flex flex-col justify-between rounded-2xl border border-brand/30 bg-brand/[0.04] p-8 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-md">
+          {/* Lado El Granadino (Ganador / Navy Profundo con Verde Esmeralda) */}
+          <div className="flex flex-col justify-between rounded-2xl border border-brand/40 bg-brand p-8 text-white shadow-xl">
             <div>
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold tracking-widest text-brand uppercase">
+                <p className="text-xs font-semibold tracking-widest text-accent uppercase">
                   <FoldText
                     text="Comprando directo a El Granadino"
                     splitBy="word"
@@ -159,17 +163,25 @@ export default function Fabricacion() {
                     color="inherit"
                   />
                 </p>
-                <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand">
-                  Directo de fábrica
+                <span className="relative flex items-center gap-1.5 rounded-full bg-accent/20 px-3 py-1 text-[11px] font-semibold text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                  <span>Mejor opción</span>
                 </span>
               </div>
 
               <ul className="mt-6 space-y-4">
                 {PROS.map((p) => (
-                  <li key={p} className="flex items-start gap-3 text-sm font-medium text-foreground">
-                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                    <span>{p}</span>
-                  </li>
+                  <motion.li
+                    key={p}
+                    whileHover={{ x: 4 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className="group flex items-start gap-3 text-sm font-medium text-white/95 cursor-default"
+                  >
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent transition-transform duration-200 group-hover:scale-125" />
+                    <span className="transition-colors duration-200 group-hover:text-white">
+                      {p}
+                    </span>
+                  </motion.li>
                 ))}
               </ul>
             </div>
