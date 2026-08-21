@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 
-// Dominio aún no definido — placeholder hasta que el cliente lo confirme.
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://elgranadino.example.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lafabricaelgranadino.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

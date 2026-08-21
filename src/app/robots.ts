@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://elgranadino.example.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lafabricaelgranadino.com";
 
 // Sin admin ni carrito que bloquear (landing de una sola página) — abierto
 // a todo, incluidos los crawlers de IA (GPTBot, ClaudeBot, etc.).

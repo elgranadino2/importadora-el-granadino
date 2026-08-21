@@ -15,15 +15,23 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lafabricaelgranadino.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "El Granadino | Accesorios para moto, ferretería y cacharrería al por mayor",
   description:
     "Fabricantes de accesorios para moto, ferretería y cacharrería en Medellín. Precio de fábrica para tu negocio, sin intermediarios. Cotiza por WhatsApp.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "El Granadino | Accesorios al por mayor para moto, ferretería y cacharrería",
     description:
       "Fabricantes en Medellín. Precio de fábrica para tu negocio, sin intermediarios.",
+    url: "/",
     locale: "es_CO",
+    type: "website",
   },
 };
 
